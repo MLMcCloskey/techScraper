@@ -3,7 +3,7 @@ $.getJSON("/articles", function(data) {
     // For each one
     for (var i = 0; i < data.length; i++) {
       // Display the apropos information on the page
-      $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "<br>"+ data[i].summary+ "</p>");
+      $("#articles").append(`<p data-id="${data[i]._id}"><a data-id="${data[i]._id}" href="${data[i].link}"> ${data[i].title} </a> <br> ${data[i].summary} </p> <hr>`);
     }
   });
   
@@ -33,11 +33,11 @@ $.getJSON("/articles", function(data) {
         $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
   
         // If there's a note in the article
-        if (data.note) {
+        if (data.Note) {
           // Place the title of the note in the title input
-          $("#titleinput").val(data.note.title);
+          $("#titleinput").val(data.Note.title);
           // Place the body of the note in the body textarea
-          $("#bodyinput").val(data.note.body);
+          $("#bodyinput").val(data.Note.body);
         }
       });
   });
@@ -46,7 +46,7 @@ $.getJSON("/articles", function(data) {
   $(document).on("click", "#savenote", function() {
     // Grab the id associated with the article from the submit button
     var thisId = $(this).attr("data-id");
-  
+    
     // Run a POST request to change the note, using what's entered in the inputs
     $.ajax({
       method: "POST",

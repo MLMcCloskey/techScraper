@@ -26,6 +26,8 @@ mongoose.connect(MONGODB_URI);
 
 // Routes
 
+app.get("/", ()=> res.send("Hello World!"))
+
 app.get("/scrape", function (req, res) {
     axios.get("https://techcrunch.com/apps/").then(function(response) {
         

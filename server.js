@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const axios = require("axios");
 const cheerio = require("cheerio");
 const db = require("./models");
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const app = express();
 
 
@@ -26,7 +26,7 @@ mongoose.connect(MONGODB_URI);
 
 // Routes
 
-app.get("/", ()=> res.send("Hello World!"))
+app.get("/", ()=> res.send("Hello World!"));
 
 app.get("/scrape", function (req, res) {
     axios.get("https://techcrunch.com/apps/").then(function(response) {
@@ -49,9 +49,9 @@ app.get("/scrape", function (req, res) {
             result.link = $(this).children("header").children("h2").children("a").attr("href");
             result.summary = $(this).children("div.post-block__content").text();
 
-            console.log(result);
-            results.push(result);
-            console.log(results)
+            // console.log(result);
+            // results.push(result);
+            // console.log(results)
 
             db.mongoHeadlines.create(result)
                 .then(function(dbHeadlines){

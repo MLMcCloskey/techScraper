@@ -1,0 +1,28 @@
+  <head>
+    <meta charset="UTF-8">
+    <title>Scraping With Mongoose</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
+  </head>
+  <body>
+    <div id="wrapper">
+      <h1>Tech Crunched</h1>
+      <h2><i>View and comment on articles from techcrunch.com's App page.</i></h2>
+      <div id="articles">
+          <h2>New Articles</h2>
+          <ul>
+              {{#each articles}} {{#unless saved}}{{/unless}}{{/each}}
+          </ul>
+      </div>
+      <div id="notes">
+          <h2>Comments</h2>
+          <ul>
+              {{#each Notes}}{{#if saved}}{{/unless}}{{/each}}
+          </ul>
+      </div>
+      <!-- <div id="summary"></div> -->
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

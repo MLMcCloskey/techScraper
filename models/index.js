@@ -2,6 +2,6 @@
 
 module.exports = {
     mongoHeadlines: require("./article"),
-    Note: require("./Note")
+    Note: require("./note")
   };
   
